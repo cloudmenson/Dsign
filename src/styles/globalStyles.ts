@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     `}
   }
 
-  svg {
+ img, svg {
     vertical-align: middle;
   }
 
@@ -35,6 +35,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
+     ${({ theme }) => css`
+       color: ${theme.colors.greyForHeader};
+     `}
+    
     text-decoration: none;
     cursor: pointer;
   }
