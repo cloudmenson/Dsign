@@ -16,6 +16,16 @@ export const GlobalStyles = createGlobalStyle`
     ${({ theme }) => css`
       color: ${theme.colors.midnightBlue};
       background: ${theme.colors.white};
+
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: ${theme.colors.darkPaleAzure};
+        border-radius: 6px;
+        border: 3px solid ${theme.colors.white};
+      }
     `}
   }
 
@@ -30,8 +40,16 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   input {
-    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
     border-radius: 10px;
+    outline: none; 
+  
+    ${({ theme }) => css`
+      color: ${theme.colors.black};
+      border: 1px solid ${theme.colors.paleAzure};
+    `}
   }
 
   a {
@@ -49,8 +67,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
     border: none;
     background: none;
+    color: ${({ theme }) => theme.colors.blue};
     cursor: pointer;
   }
 

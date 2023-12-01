@@ -1,13 +1,38 @@
 import { IButton } from "./types";
 import * as Styles from "./styles";
 
-const Button = ({ icon, type, text, background }: IButton) => {
+const Button = ({
+  icon,
+  type,
+  text,
+  color,
+  hover,
+  border,
+  margin,
+  onClick,
+  padding,
+  buttonIcon,
+  background,
+  borderRadius,
+}: IButton) => {
   return (
-    <Styles.ButtonWrapper background={background}>
-      {icon ? (
-        <Styles.Button type={type}>{icon}</Styles.Button>
+    <Styles.ButtonWrapper
+      hover={hover}
+      border={border}
+      margin={margin}
+      onClick={onClick}
+      padding={padding}
+      background={background}
+      borderRadius={borderRadius}
+    >
+      {buttonIcon ? (
+        <Styles.Button type={type}>{buttonIcon}</Styles.Button>
       ) : (
-        <Styles.Button type={type}>{text}</Styles.Button>
+        <Styles.Button type={type}>
+          {icon && <Styles.IconSpan>{icon}</Styles.IconSpan>}
+
+          <Styles.ButtonText color={color}>{text}</Styles.ButtonText>
+        </Styles.Button>
       )}
     </Styles.ButtonWrapper>
   );
