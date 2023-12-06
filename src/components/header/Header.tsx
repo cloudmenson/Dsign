@@ -4,7 +4,7 @@ import * as Image from "assets";
 import { Button, Popup } from "components";
 
 import * as Styles from "./styles";
-import { navData } from "./navData";
+import { navData } from "./nav-data";
 
 const Header = () => {
   const [isSignInPopupOpen, setSignInPopupOpen] = useState(false);
@@ -33,6 +33,8 @@ const Header = () => {
     <Styles.Header>
       <Styles.Logo href="/home">
         <Image.Logo />
+
+        <Styles.HiddenTitleH1>Dsign</Styles.HiddenTitleH1>
       </Styles.Logo>
 
       <Styles.HeaderNav>
@@ -53,12 +55,12 @@ const Header = () => {
         />
 
         <Button
-          hover="true"
+          hover="blue"
           color="blue"
           type="button"
           text="Sign Up"
           margin="0 0 0 35px"
-          borderRadius="circle"
+          borderradius="circle"
           background="paleAzure"
           onClick={() => openSignUpPopup()}
         />

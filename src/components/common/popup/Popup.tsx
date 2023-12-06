@@ -61,7 +61,7 @@ const Popup = ({ onClose, isResetPassword, text }: IPopup) => {
           padding="8px 16px"
           margin="24px 0 0 0"
           icon={<Image.Lock />}
-          borderRadius="square"
+          borderradius="square"
         />
 
         <Styles.StylesForGotItButton>

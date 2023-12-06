@@ -6,10 +6,14 @@ export const Header = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1000px;
 `;
 
 export const Logo = styled.a``;
+
+export const HiddenTitleH1 = styled.h1`
+  position: absolute;
+  left: -9999px;
+`;
 
 export const HeaderNav = styled.nav`
   display: flex;

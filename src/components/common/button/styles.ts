@@ -16,7 +16,7 @@ export const ButtonWrapper = styled.div<IButton>`
     theme,
     padding,
     background,
-    borderRadius,
+    borderradius,
   }) => css`
     ${hover &&
     css`
@@ -29,16 +29,16 @@ export const ButtonWrapper = styled.div<IButton>`
       }
     `}
 
-    ${borderRadius &&
+    ${borderradius &&
     css`
-      border-radius: ${borderRadius === "circle"
+      border-radius: ${borderradius === "circle"
         ? "0 30px 30px 40px"
-        : borderRadius === "square"
+        : borderradius === "square"
           ? "3px"
           : null};
     `}
 
-    ${borderRadius === "square" &&
+    ${borderradius === "square" &&
     css`
       display: flex;
       justify-content: center;

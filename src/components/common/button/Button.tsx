@@ -13,7 +13,7 @@ const Button = ({
   padding,
   buttonIcon,
   background,
-  borderRadius,
+  borderradius,
 }: IButton) => {
   return (
     <Styles.ButtonWrapper
@@ -23,7 +23,7 @@ const Button = ({
       onClick={onClick}
       padding={padding}
       background={background}
-      borderRadius={borderRadius}
+      borderradius={borderradius}
     >
       {buttonIcon ? (
         <Styles.Button type={type}>{buttonIcon}</Styles.Button>
