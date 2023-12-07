@@ -1,4 +1,3 @@
-
 export { default as Garnier } from "../assets/img/garnier.png";
 export { default as Google } from "../assets/img/google.png";
 export { default as HeaderBackground } from "../assets/svg/header-background.svg";
@@ -10,6 +9,7 @@ export { default as Tablet } from "../assets/img/tablet.png";
 export { default as Udemy } from "../assets/img/udemy.png";
 export { default as UserBackground } from "../assets/img/user-background.png";
 export { default as WorkupSite } from "../assets/img/workup-site.png";
+export { ReactComponent as Arrow } from "../assets/svg/arrow.svg";
 export { ReactComponent as Check } from "../assets/svg/check.svg";
 export { ReactComponent as Email } from "../assets/svg/email.svg";
 export { ReactComponent as Facebook } from "../assets/svg/facebook.svg";
