@@ -263,3 +263,8 @@ export const WyWeBestElementsSubtitle = styled.p`
   font-size: 18px;
   line-height: 25px;
 `;
+
+export const OurNetworkSection = styled.section`
+  margin-top: 200px 0 0 0;
+  background-color: ${({ theme }) => theme.colors.ourNetworkBackground};
+`;

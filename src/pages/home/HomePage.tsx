@@ -183,6 +183,10 @@ const HomePage = () => {
             </Styles.WyWeBestReliability>
           </Styles.WhyWeBestSectionRightPart>
         </Styles.WhyWeBestSection>
+
+        <Styles.OurNetworkSection>
+          our network
+        </Styles.OurNetworkSection>
       </Styles.Main>
     </Styles.Wrapper>
   );
