@@ -1,3 +1,6 @@
+export { default as Australia } from "../assets/svg/australia.svg";
+export { default as Bangladesh } from "../assets/svg/bangladesh.svg";
+export { default as China } from "../assets/svg/china.svg";
 export { default as Garnier } from "../assets/img/garnier.png";
 export { default as Google } from "../assets/img/google.png";
 export { default as HeaderBackground } from "../assets/svg/header-background.svg";
@@ -7,6 +10,7 @@ export { default as Post } from "../assets/img/post.png";
 export { default as Slack } from "../assets/img/slack.png";
 export { default as Tablet } from "../assets/img/tablet.png";
 export { default as Udemy } from "../assets/img/udemy.png";
+export { default as UnitedStates } from "../assets/svg/united-states-of-america.svg";
 export { default as UserBackground } from "../assets/img/user-background.png";
 export { default as WorkupSite } from "../assets/img/workup-site.png";
 export { ReactComponent as Arrow } from "../assets/svg/arrow.svg";
