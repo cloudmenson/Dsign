@@ -1,11 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Header = styled.header`
+import { IHeader } from "./types";
+
+export const Header = styled.header<IHeader>`
   padding: 24px 17px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 1280px;
+  transition: none;
+
+  z-index: 999999;
+
+  ${({ theme, isScrolled }) => css`
+    ${isScrolled &&
+    css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      justify-content: space-evenly;
+      width: 100%;
+      background-color: ${theme.colors.white};
+      box-shadow: 0 15px 30px ${theme.colors.isFixedHeader};
+      transition:
+        box-shadow 0.2s linear,
+        background-color 0.2s linear;
+    `}
+  `}
 `;
 
 export const Logo = styled.a``;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import * as Image from "assets";
 import { Button, Popup } from "components";
@@ -29,8 +29,28 @@ const Header = () => {
     setSignUpPopupOpen(false);
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Styles.Header>
+    <Styles.Header isScrolled={isScrolled}>
       <Styles.Logo href="/home">
         <Image.Logo />
 

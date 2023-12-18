@@ -14,7 +14,7 @@ const OurNetwork = () => {
 
       {ourNetworkData && (
         <Styles.CountryCardWrapper>
-          {ourNetworkData?.map((item) => (
+          {ourNetworkData.map((item) => (
             <Styles.CountryCard key={item.id}>
               <Styles.FlagAndCountryName>
                 <Styles.CountryFlag src={item.img} alt={item.alt} />
