@@ -6,3 +6,4 @@ export { Header } from "../components/header/Header";
 export { Popup } from "../components/common/popup/Popup";
 export { SendMail } from "../components/send-mail/SendMail";
 export { Slider } from "../components/slider/Slider";
+export * as Responsive from "../components/common/responsive";

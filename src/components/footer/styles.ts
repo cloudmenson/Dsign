@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { IWindowWidth } from "./types";
+
 const stylesForFooterLink = css`
   font-size: 14px;
   line-height: 20px;
@@ -13,13 +15,21 @@ export const Footer = styled.footer`
   flex-direction: column;
 `;
 
-export const FooterTopPart = styled.div`
+export const FooterTopPart = styled.div<IWindowWidth>`
   padding-bottom: 70px;
   display: flex;
-  gap: 130px;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid #ffffff;
+
+  ${({ theme, windowWidth }) => css`
+    ${windowWidth < 769 &&
+    css`
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid ${theme.colors.white};
+    `}
+  `}
 `;
 
 export const FooterBackgroundColor = styled.div`
@@ -33,19 +43,47 @@ export const FooterBackgroundColor = styled.div`
 `;
 
 export const Logo = styled.a`
-  svg {
-    path {
-      fill: #ffffff;
+  ${({ theme }) => css`
+    svg {
+      path {
+        fill: ${theme.colors.white};
+      }
     }
-  }
+  `}
 `;
 
-export const SocialLinkContainer = styled.div`
+export const FooterLinksWrapperForDirections = styled.div<IWindowWidth>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 150px;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 769 &&
+    css`
+      gap: 200px;
+    `}
+
+    ${windowWidth < 376 &&
+    css`
+      gap: 80px;
+    `}
+  `}
+`;
+
+export const SocialLinkContainer = styled.div<IWindowWidth>`
   margin-top: 30px;
   display: flex;
   gap: 15px;
   flex-direction: row;
   align-items: center;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 769 &&
+    css`
+      justify-content: center;
+    `}
+  `}
 `;
 
 export const SocialLink = styled.a`
@@ -59,9 +97,17 @@ export const SocialLink = styled.a`
   }
 `;
 
-export const FooterLinksContainer = styled.div`
+export const FooterLinksContainer = styled.div<IWindowWidth>`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 769 &&
+    css`
+      align-items: center;
+    `}
+  `}
 `;
 
 export const FooterLink = styled.a`
@@ -96,18 +142,33 @@ export const FooterCompanyDetailsItem = styled.h5`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const FooterBottomPart = styled.div`
+export const FooterBottomPart = styled.div<IWindowWidth>`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 621 &&
+    css`
+      gap: 15px;
+      flex-direction: column;
+    `}
+  `}
 `;
 
-export const FooterTermsLink = styled.a`
-  ${stylesForFooterLink};
+export const FooterTermsLink = styled.a<IWindowWidth>`
+  ${({ theme, windowWidth }) => css`
+    ${stylesForFooterLink};
 
-  color: ${({ theme }) => theme.colors.white};
+    color: ${theme.colors.white};
+
+    ${windowWidth < 769 &&
+    css`
+      font-size: 12px;
+    `}
+  `}
 
   &:hover {
     opacity: 0.75;

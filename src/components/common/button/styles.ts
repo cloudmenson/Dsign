@@ -10,15 +10,15 @@ export const ButtonWrapper = styled.div<IButton>`
   cursor: pointer;
 
   ${({
-    hover,
-    border,
-    margin,
     theme,
-    padding,
-    background,
-    borderradius,
+    isHover,
+    isBorder,
+    isMargin,
+    isPadding,
+    isBackground,
+    isBorderRadius,
   }) => css`
-    ${hover &&
+    ${isHover &&
     css`
       &:hover {
         background: ${theme.colors.blue};
@@ -29,16 +29,16 @@ export const ButtonWrapper = styled.div<IButton>`
       }
     `}
 
-    ${borderradius &&
+    ${isBorderRadius &&
     css`
-      border-radius: ${borderradius === "circle"
+      border-radius: ${isBorderRadius === "circle"
         ? "0 30px 30px 40px"
-        : borderradius === "square"
+        : isBorderRadius === "square"
           ? "3px"
           : null};
     `}
 
-    ${borderradius === "square" &&
+    ${isBorderRadius === "square" &&
     css`
       display: flex;
       justify-content: center;
@@ -46,29 +46,29 @@ export const ButtonWrapper = styled.div<IButton>`
     `}
 
 
-    ${background &&
+    ${isBackground &&
     css`
-      background: ${background === "blue"
+      background: ${isBackground === "blue"
         ? theme.colors.blue
-        : background === "paleAzure"
+        : isBackground === "paleAzure"
           ? theme.colors.paleAzure
           : null};
     `}
 
-    ${padding &&
+    ${isPadding &&
     css`
-      padding: ${padding};
+      padding: ${isPadding};
     `}
 
-    ${margin &&
+    ${isMargin &&
     css`
-      margin: ${margin};
+      margin: ${isMargin};
     `}
 
-    ${border &&
+    ${isBorder &&
     css`
       border: 1px solid
-        ${border === "paleAzure" ? theme.colors.darkPaleAzure : null};
+        ${isBorder === "paleAzure" ? theme.colors.darkPaleAzure : null};
     `}
   `}
 `;

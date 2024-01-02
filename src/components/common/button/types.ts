@@ -7,15 +7,14 @@ type ButtonTypes = "button" | "submit" | "reset" | undefined;
 
 export interface IButton {
   text?: string;
-  hover?: string;
-  margin?: string;
-  icon?: ReactNode;
-  padding?: string;
+  isHover?: string;
+  isMargin?: string;
+  isIcon?: ReactNode;
+  isPadding?: string;
   type?: ButtonTypes;
   onClick?: () => void;
   color?: ButtonColors;
-  buttonIcon?: ReactNode;
-  background?: ButtonBackground;
-  border?: "paleAzure" | undefined;
-  borderradius?: ButtonBorderRadius;
+  isBackground?: ButtonBackground;
+  isBorder?: "paleAzure" | undefined;
+  isBorderRadius?: ButtonBorderRadius;
 }

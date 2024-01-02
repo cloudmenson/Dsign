@@ -3,3 +3,7 @@ export interface IPopup {
   onClose: () => void;
   isResetPassword?: boolean;
 }
+
+export interface IWindowWidth {
+  windowWidth: number;
+}

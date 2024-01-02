@@ -14,6 +14,7 @@ export { default as Udemy } from "../assets/img/udemy.png";
 export { default as UnitedStates } from "../assets/svg/united-states-of-america.svg";
 export { default as WorkupSite } from "../assets/img/workup-site.png";
 export { ReactComponent as Arrow } from "../assets/svg/arrow.svg";
+export { ReactComponent as BurgerMenu } from "../assets/svg/burger-menu.svg";
 export { ReactComponent as Check } from "../assets/svg/check.svg";
 export { ReactComponent as Email } from "../assets/svg/email.svg";
 export { ReactComponent as Facebook } from "../assets/svg/facebook.svg";

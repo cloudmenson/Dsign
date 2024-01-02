@@ -1,22 +1,25 @@
-import { SendMail } from "components";
 import * as Image from "assets";
+import { SendMail } from "components";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 import * as Styles from "./styles";
 
 const Footer = () => {
+  const size = useWindowWidth();
+
   return (
     <Styles.Footer>
       <SendMail />
 
       <Styles.FooterBackgroundColor />
 
-      <Styles.FooterTopPart>
+      <Styles.FooterTopPart windowWidth={size}>
         <div>
           <Styles.Logo href="#">
             <Image.Logo />
           </Styles.Logo>
 
-          <Styles.SocialLinkContainer>
+          <Styles.SocialLinkContainer windowWidth={size}>
             <Styles.SocialLink href="#">
               <Image.Facebook />
             </Styles.SocialLink>
@@ -31,21 +34,23 @@ const Footer = () => {
           </Styles.SocialLinkContainer>
         </div>
 
-        <Styles.FooterLinksContainer>
-          <Styles.FooterLink href="#">Home</Styles.FooterLink>
-          <Styles.FooterLink href="#">Popular</Styles.FooterLink>
-          <Styles.FooterLink href="#">About</Styles.FooterLink>
-          <Styles.FooterLink href="#">Contact</Styles.FooterLink>
-        </Styles.FooterLinksContainer>
+        <Styles.FooterLinksWrapperForDirections windowWidth={size}>
+          <Styles.FooterLinksContainer windowWidth={size}>
+            <Styles.FooterLink href="#">Home</Styles.FooterLink>
+            <Styles.FooterLink href="#">Popular</Styles.FooterLink>
+            <Styles.FooterLink href="#">About</Styles.FooterLink>
+            <Styles.FooterLink href="#">Contact</Styles.FooterLink>
+          </Styles.FooterLinksContainer>
 
-        <Styles.FooterLinksContainer>
-          <Styles.FooterLink href="#">Help</Styles.FooterLink>
-          <Styles.FooterLink href="#">Resources</Styles.FooterLink>
-          <Styles.FooterLink href="#">Application</Styles.FooterLink>
-          <Styles.FooterLink href="#">Team</Styles.FooterLink>
-        </Styles.FooterLinksContainer>
+          <Styles.FooterLinksContainer windowWidth={size}>
+            <Styles.FooterLink href="#">Help</Styles.FooterLink>
+            <Styles.FooterLink href="#">Resources</Styles.FooterLink>
+            <Styles.FooterLink href="#">Application</Styles.FooterLink>
+            <Styles.FooterLink href="#">Team</Styles.FooterLink>
+          </Styles.FooterLinksContainer>
+        </Styles.FooterLinksWrapperForDirections>
 
-        <Styles.FooterLinksContainer>
+        <Styles.FooterLinksContainer windowWidth={size}>
           <Styles.FooterCompanyDetails>
             <Image.Marker />
 
@@ -72,19 +77,23 @@ const Footer = () => {
         </Styles.FooterLinksContainer>
       </Styles.FooterTopPart>
 
-      <Styles.FooterBottomPart>
-        <Styles.FooterTermsLink href="https://adminmart.com" target="_blank">
+      <Styles.FooterBottomPart windowWidth={size}>
+        <Styles.FooterTermsLink
+          target="_blank"
+          windowWidth={size}
+          href="https://adminmart.com"
+        >
           @2023 Agency. All Rights Reserved by Adminmart.com
         </Styles.FooterTermsLink>
 
         <Styles.StyleForFooterTermsLink>
-          <Styles.FooterTermsLink href="#">
+          <Styles.FooterTermsLink windowWidth={size} href="#">
             Privacy policy
           </Styles.FooterTermsLink>
 
           <Styles.FooterPartition>|</Styles.FooterPartition>
 
-          <Styles.FooterTermsLink href="#">
+          <Styles.FooterTermsLink windowWidth={size} href="#">
             Terms & conditions
           </Styles.FooterTermsLink>
         </Styles.StyleForFooterTermsLink>

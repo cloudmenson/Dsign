@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 const fadeIn = keyframes`
   from {
@@ -15,10 +15,11 @@ export const Popup = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   animation: ${fadeIn} 0.3s ease-in-out forwards;
   backdrop-filter: blur(1px);
   background-color: rgba(0, 0, 0, 0.1);
@@ -30,7 +31,7 @@ export const Popup = styled.div`
 `;
 
 export const PopupContent = styled.div`
-  padding: 60px 48px 35px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,8 +59,8 @@ export const CheckboxLabel = styled.label`
   font-size: 15px;
 `;
 
-export const CheckBoxAndResetPass = styled.div`
-  margin-top: 20px;
+export const RememberMe = styled.div`
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -68,6 +69,7 @@ export const CheckBoxAndResetPass = styled.div`
 `;
 
 export const ResetPassLink = styled.a`
+  margin: 10px 0;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;

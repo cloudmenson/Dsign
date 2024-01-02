@@ -2,38 +2,33 @@ import { IButton } from "./types";
 import * as Styles from "./styles";
 
 const Button = ({
-  icon,
-  type,
   text,
+  type,
   color,
-  hover,
-  border,
-  margin,
+  isIcon,
+  isHover,
   onClick,
-  padding,
-  buttonIcon,
-  background,
-  borderradius,
+  isBorder,
+  isMargin,
+  isPadding,
+  isBackground,
+  isBorderRadius,
 }: IButton) => {
   return (
     <Styles.ButtonWrapper
-      hover={hover}
-      border={border}
-      margin={margin}
+      isHover={isHover}
       onClick={onClick}
-      padding={padding}
-      background={background}
-      borderradius={borderradius}
+      isBorder={isBorder}
+      isMargin={isMargin}
+      isPadding={isPadding}
+      isBackground={isBackground}
+      isBorderRadius={isBorderRadius}
     >
-      {buttonIcon ? (
-        <Styles.Button type={type}>{buttonIcon}</Styles.Button>
-      ) : (
-        <Styles.Button type={type}>
-          {icon && <Styles.IconSpan>{icon}</Styles.IconSpan>}
+      <Styles.Button type={type}>
+        {isIcon && <Styles.IconSpan>{isIcon}</Styles.IconSpan>}
 
-          <Styles.ButtonText color={color}>{text}</Styles.ButtonText>
-        </Styles.Button>
-      )}
+        <Styles.ButtonText color={color}>{text}</Styles.ButtonText>
+      </Styles.Button>
     </Styles.ButtonWrapper>
   );
 };

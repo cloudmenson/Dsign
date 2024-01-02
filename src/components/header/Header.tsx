@@ -1,35 +1,32 @@
 import { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
 
 import * as Image from "assets";
-import { Button, Popup } from "components";
+import { useWindowWidth } from "hooks/useWindowWidth";
+import { Button, Popup, Responsive } from "components";
 
 import * as Styles from "./styles";
 import { navData } from "./nav-data";
 
 const Header = () => {
-  const [isSignInPopupOpen, setSignInPopupOpen] = useState(false);
-  const [isSignUpPopupOpen, setSignUpPopupOpen] = useState(false);
-
-  const openSignInPopup = () => {
-    document.body.style.overflow = "hidden";
-
-    setSignInPopupOpen(true);
+  const PopupTypes = {
+    SIGN_IN: "sign-in",
+    SIGN_UP: "sign-up",
   };
 
-  const openSignUpPopup = () => {
-    document.body.style.overflow = "hidden";
+  const size = useWindowWidth();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isActivePopup, setIsActivePopup] = useState(null);
 
-    setSignUpPopupOpen(true);
+  const openPopup = (popupType: any) => {
+    document.body.style.overflow = "hidden";
+    setIsActivePopup(popupType);
   };
 
   const closePopup = () => {
     document.body.style.overflow = "auto";
-
-    setSignInPopupOpen(false);
-    setSignUpPopupOpen(false);
+    setIsActivePopup(null);
   };
-
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,46 +47,94 @@ const Header = () => {
   }, []);
 
   return (
-    <Styles.Header isScrolled={isScrolled}>
-      <Styles.Logo href="/home">
+    <Styles.Header windowWidth={size} isScrolled={isScrolled}>
+      <Styles.Logo href="#">
         <Image.Logo />
 
         <Styles.HiddenTitleH1>Dsign</Styles.HiddenTitleH1>
       </Styles.Logo>
 
-      <Styles.HeaderNav>
-        {navData.map((navItem) => (
-          <Styles.NavLink key={navItem.name} href={navItem.href}>
-            {navItem.name}
-          </Styles.NavLink>
-        ))}
-      </Styles.HeaderNav>
+      <Responsive.NotDesktop>
+        <Styles.BurgerMenu
+          right
+          width={"200px"}
+          customCrossIcon={false}
+          customBurgerIcon={<FaBars size={25} />}
+          className="burger-menu custom-close-button"
+        >
+          <Styles.HeaderNav windowWidth={size}>
+            {navData.map((navItem) => (
+              <Styles.NavLink key={navItem.name} href={navItem.href}>
+                {navItem.name}
+              </Styles.NavLink>
+            ))}
+          </Styles.HeaderNav>
 
-      <Styles.ButtonsGroup>
-        <Button
-          padding="0"
-          color="blue"
-          type="button"
-          text="Sign In"
-          onClick={() => openSignInPopup()}
-        />
+          <Styles.ButtonsGroup>
+            <Button
+              color="blue"
+              type="button"
+              isMargin="4px"
+              text="Sign In"
+              isBorder="paleAzure"
+              isPadding="8px 16px"
+              isBorderRadius="square"
+              onClick={() => openPopup(PopupTypes.SIGN_IN)}
+            />
 
-        <Button
-          hover="blue"
-          color="blue"
-          type="button"
-          text="Sign Up"
-          margin="0 0 0 35px"
-          borderradius="circle"
-          background="paleAzure"
-          onClick={() => openSignUpPopup()}
-        />
+            <Button
+              color="blue"
+              type="button"
+              isHover="blue"
+              isMargin="4px"
+              text="Sign Up"
+              isPadding="8px 16px"
+              isBorderRadius="square"
+              isBackground="paleAzure"
+              onClick={() => openPopup(PopupTypes.SIGN_UP)}
+            />
+          </Styles.ButtonsGroup>
+        </Styles.BurgerMenu>
+      </Responsive.NotDesktop>
 
-        {isSignInPopupOpen && (
-          <Popup onClose={closePopup} isResetPassword text="Sign In" />
-        )}
-        {isSignUpPopupOpen && <Popup onClose={closePopup} text="Sign Up" />}
-      </Styles.ButtonsGroup>
+      <Responsive.Desktop>
+        <Styles.HeaderNav windowWidth={size}>
+          {navData.map((navItem) => (
+            <Styles.NavLink key={navItem.name} href={navItem.href}>
+              {navItem.name}
+            </Styles.NavLink>
+          ))}
+        </Styles.HeaderNav>
+
+        <Styles.ButtonsGroup>
+          <Button
+            color="blue"
+            isPadding="0"
+            type="button"
+            text="Sign In"
+            onClick={() => openPopup(PopupTypes.SIGN_IN)}
+          />
+
+          <Button
+            color="blue"
+            type="button"
+            isHover="blue"
+            text="Sign Up"
+            isMargin="0 0 0 35px"
+            isBorderRadius="circle"
+            isBackground="paleAzure"
+            onClick={() => openPopup(PopupTypes.SIGN_UP)}
+          />
+        </Styles.ButtonsGroup>
+      </Responsive.Desktop>
+
+      {isActivePopup === PopupTypes.SIGN_IN && (
+        <Popup onClose={closePopup} isResetPassword text="Sign In" />
+      )}
+
+      {isActivePopup === PopupTypes.SIGN_UP && (
+        <Popup onClose={closePopup} text="Sign Up" />
+      )}
     </Styles.Header>
   );
 };

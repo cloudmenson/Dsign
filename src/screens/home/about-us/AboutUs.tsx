@@ -1,22 +1,32 @@
+import { useWindowWidth } from "hooks/useWindowWidth";
+
 import * as Image from "assets";
 
 import * as Styles from "./styles";
 
 const AboutUs = () => {
-  return (
-    <Styles.AboutUsSection>
-      <Styles.AboutUsTitleH2>What say clients about us.</Styles.AboutUsTitleH2>
+  const size = useWindowWidth();
 
-      <Styles.AboutUsDescription>
+  return (
+    <Styles.AboutUsSection windowWidth={size}>
+      <Styles.AboutUsTitleH2 windowWidth={size}>
+        What say clients about us.
+      </Styles.AboutUsTitleH2>
+
+      <Styles.AboutUsDescription windowWidth={size}>
         Event madness gathering innoies,& tech enthusiasts in Speced. do more
         informations.
       </Styles.AboutUsDescription>
 
       <Styles.UIDesigner>
-        <Styles.People src={Image.People} alt="People" />
+        <Styles.People windowWidth={size} src={Image.People} alt="People" />
 
-        <Styles.JonyScottyBlock>
-          <Styles.JonnyScottyImage src={Image.Man} alt="Jony Scotty" />
+        <Styles.JonyScottyBlock windowWidth={size}>
+          <Styles.JonnyScottyImage
+            src={Image.Man}
+            alt="Jony Scotty"
+            windowWidth={size}
+          />
 
           <Styles.JonyScottyBackground>
             <Styles.JonyScottySubtitle>

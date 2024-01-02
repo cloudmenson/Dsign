@@ -2,48 +2,22 @@ import { motion } from "framer-motion";
 
 import * as Image from "assets";
 import { Button, Slider } from "components";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 import * as Styles from "./styles";
+import {
+  titleVariants,
+  buttonVariants,
+  subtitleVariants,
+} from "./motion-config";
 
 const Acquaintance = () => {
-  const titleVariants = {
-    initial: {
-      opacity: 0,
-      y: -100,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 3,
-        delay: 0.6,
-        type: "spring",
-        stiffness: 300,
-      },
-    },
-  };
-
-  const subtitleVariants = {
-    initial: {
-      opacity: 0,
-      x: -200,
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 3,
-        delay: 1.4,
-        type: "spring",
-        stiffness: 500,
-      },
-    },
-  };
+  const size = useWindowWidth();
 
   return (
     <Styles.AcquaintanceSection>
       <motion.div initial="initial" animate="animate" variants={titleVariants}>
-        <Styles.SolveProblemTitleH2>
+        <Styles.SolveProblemTitleH2 windowWidth={size}>
           Solve problem with an integrated agency.
         </Styles.SolveProblemTitleH2>
       </motion.div>
@@ -53,32 +27,45 @@ const Acquaintance = () => {
         animate="animate"
         variants={subtitleVariants}
       >
-        <Styles.TitleDescription>
+        <Styles.TitleDescription windowWidth={size}>
           Ehya is the Instagram analytics platform teams use to stay focused on
-          the goals, track engagement for report your business .
+          the goals, track engagement for report your business.
         </Styles.TitleDescription>
       </motion.div>
 
-      <Styles.ButtonsContainer>
-        <Button
-          color="white"
-          background="blue"
-          padding="22px 33px"
-          margin="0 20px 0 0"
-          borderradius="circle"
-          text="See our portfolio"
-        />
+      <Styles.ButtonsContainer windowWidth={size}>
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={buttonVariants}
+        >
+          <Button
+            color="white"
+            isBackground="blue"
+            isPadding="22px 33px"
+            isBorderRadius="circle"
+            text="See our portfolio"
+          />
+        </motion.div>
 
-        <Button
-          color="blue"
-          hover="blue"
-          text="More info"
-          border="paleAzure"
-          borderradius="circle"
-        />
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={buttonVariants}
+        >
+          <Button
+            color="blue"
+            isHover="blue"
+            text="More info"
+            isBorder="paleAzure"
+            isBorderRadius="circle"
+          />
+        </motion.div>
       </Styles.ButtonsContainer>
 
-      <Styles.WorkupSiteImage src={Image.WorkupSite} />
+      <Styles.WorkupSiteImageContainer windowWidth={size}>
+        <Styles.WorkupSiteImage windowWidth={size} src={Image.WorkupSite} />
+      </Styles.WorkupSiteImageContainer>
 
       <Slider />
     </Styles.AcquaintanceSection>

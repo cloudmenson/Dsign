@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
+import { slide as Menu } from "react-burger-menu";
 
-import { IHeader } from "./types";
+import { IHeader, IWindowsWidth } from "./types";
 
 export const Header = styled.header<IHeader>`
   padding: 24px 17px;
@@ -8,12 +9,11 @@ export const Header = styled.header<IHeader>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 1280px;
+  width: 100%;
   transition: none;
-
   z-index: 999999;
 
-  ${({ theme, isScrolled }) => css`
+  ${({ theme, isScrolled, windowWidth }) => css`
     ${isScrolled &&
     css`
       position: fixed;
@@ -28,6 +28,41 @@ export const Header = styled.header<IHeader>`
         box-shadow 0.2s linear,
         background-color 0.2s linear;
     `}
+
+    ${windowWidth < 1058 &&
+    css`
+      padding: 24px 10px;
+      justify-content: space-between;
+    `}
+
+    .burger-menu {
+      top: 6rem;
+      background: ${theme.colors.white};
+      box-shadow:
+        0 20px 25px -5px ${theme.colors.ourServiceBoxShadow},
+        0 8px 10px -6px ${theme.colors.ourServiceBoxShadow};
+    }
+
+    .bm-item-list {
+      padding: 25px 5px;
+    }
+
+    .bm-overlay {
+      top: 7rem;
+      left: 0;
+    }
+
+    .bm-burger-button {
+      position: relative;
+
+      button {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 25px !important;
+        height: 25px !important;
+      }
+    }
   `}
 `;
 
@@ -38,10 +73,26 @@ export const HiddenTitleH1 = styled.h1`
   left: -9999px;
 `;
 
-export const HeaderNav = styled.nav`
-  display: flex;
+export const BurgerMenu = styled(Menu)`
+  position: relative;
+`;
+
+export const FaTimesContainer = styled.div`
+  margin-top: 10px;
+`;
+
+export const HeaderNav = styled.nav<IWindowsWidth>`
+  display: flex !important;
   flex-direction: row;
   align-items: center;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 1024 &&
+    css`
+      flex-direction: column;
+      align-items: flex-start;
+    `}
+  `}
 `;
 
 export const NavLink = styled.a`
@@ -56,7 +107,14 @@ export const NavLink = styled.a`
 `;
 
 export const ButtonsGroup = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: column;
   align-items: center;
+
+  ${({ theme }) => css`
+    ${theme.responsive.isDesktop &&
+    css`
+      flex-direction: row;
+    `}
+  `}
 `;

@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 import * as Styles from "./styles";
 import { factItemData } from "./fact-item-data";
 
 const FactItem = () => {
+  const size = useWindowWidth();
   const controls = useAnimation();
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const FactItem = () => {
   }, [controls]);
 
   return (
-    <Styles.FactItemContainer>
+    <Styles.FactItemContainer windowWidth={size}>
       {factItemData.map((item) => (
         <Styles.FactItemElement key={item.id}>
           <motion.div animate={controls}>
@@ -33,11 +35,13 @@ const FactItem = () => {
             </Styles.IconSpan>
           </motion.div>
 
-          <Styles.Execution>{item.execution}</Styles.Execution>
+          <Styles.Execution windowWidth={size}>
+            {item.execution}
+          </Styles.Execution>
 
-          <Styles.Title>{item.title}</Styles.Title>
+          <Styles.Title windowWidth={size}>{item.title}</Styles.Title>
 
-          <Styles.Subtitle>{item.subtitle}</Styles.Subtitle>
+          <Styles.Subtitle windowWidth={size}>{item.subtitle}</Styles.Subtitle>
         </Styles.FactItemElement>
       ))}
     </Styles.FactItemContainer>

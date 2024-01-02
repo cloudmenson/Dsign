@@ -40,37 +40,38 @@ const Popup = ({ onClose, isResetPassword, text }: IPopup) => {
 
         <Form />
 
-        <Styles.CheckBoxAndResetPass>
+        <Styles.RememberMe>
           <Styles.CheckboxWrapper>
             <Styles.Checkbox type="checkbox" id="checkbox" />
+
             <Styles.CheckboxLabel htmlFor="checkbox">
               Remember me
             </Styles.CheckboxLabel>
           </Styles.CheckboxWrapper>
-
-          {isResetPassword && (
-            <Styles.ResetPassLink>Forgot your password?</Styles.ResetPassLink>
-          )}
-        </Styles.CheckBoxAndResetPass>
+        </Styles.RememberMe>
 
         <Button
           text={text}
           type="submit"
           color="white"
-          background="blue"
-          padding="8px 16px"
-          margin="24px 0 0 0"
-          icon={<Image.Lock />}
-          borderradius="square"
+          isBackground="blue"
+          isPadding="8px 16px"
+          isMargin="24px 0 0 0"
+          isIcon={<Image.Lock />}
+          isBorderRadius="square"
         />
+
+        {isResetPassword && (
+          <Styles.ResetPassLink>Forgot your password?</Styles.ResetPassLink>
+        )}
 
         <Styles.StylesForGotItButton>
           <Button
-            padding="0"
+            isPadding="0"
             type="submit"
             color="black"
             onClick={onClose}
-            margin="60px 0 0 0"
+            isMargin="60px 0 0 0"
             text="Got it, thanks!"
           />
         </Styles.StylesForGotItButton>

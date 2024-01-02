@@ -1,3 +1,8 @@
 export interface IHeader {
-  isScrolled: boolean;
+  isScrolled?: any;
+  windowWidth: number;
+}
+
+export interface IWindowsWidth {
+  windowWidth: number;
 }

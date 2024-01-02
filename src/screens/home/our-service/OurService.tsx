@@ -2,19 +2,25 @@ import { motion } from "framer-motion";
 
 import * as Image from "assets";
 import { FactItem } from "components";
+import { useWindowWidth } from "hooks/useWindowWidth";
 
 import * as Styles from "./styles";
+import { ourServiceData } from "./our-service-data";
 
 const OurService = () => {
+  const size = useWindowWidth();
+
   return (
     <Styles.OurServiceSection>
       <FactItem />
 
-      <Styles.WeProvideThatService>
-        <Styles.WeProvideThatServiceLeftPart>
-          <Styles.OurServiceH2>We provide that service.</Styles.OurServiceH2>
+      <Styles.WeProvideThatService windowWidth={size}>
+        <Styles.WeProvideThatServiceLeftPart windowWidth={size}>
+          <Styles.OurServiceH2 windowWidth={size}>
+            We provide that service.
+          </Styles.OurServiceH2>
 
-          <Styles.OurServiceText>
+          <Styles.OurServiceText windowWidth={size}>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -28,93 +34,32 @@ const OurService = () => {
           </Styles.OurServiceLink>
         </Styles.WeProvideThatServiceLeftPart>
 
-        <Styles.WeProvideThatServiceRightPart>
-          <Styles.RightPartContent>
-            <Styles.RightPartBackground />
+        <Styles.WeProvideThatServiceRightPart windowWidth={size}>
+          <Styles.RightPartContent windowWidth={size}>
+            {ourServiceData?.map((item) => (
+              <motion.button
+                key={item.id}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                style={{
+                  color: "inherit",
+                  textAlign: "left",
+                  fontWeight: "inherit",
+                }}
+              >
+                <Styles.OurElement windowWidth={size}>
+                  <item.image />
 
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              style={{
-                color: "inherit",
-                textAlign: "left",
-                fontWeight: "inherit",
-              }}
-            >
-              <Styles.MarketingElement>
-                <Image.Marketing />
+                  <Styles.OurElementH4 windowWidth={size}>
+                    {item.title}
+                  </Styles.OurElementH4>
 
-                <Styles.MarketingElementH4>Marketing</Styles.MarketingElementH4>
-
-                <Styles.MarketingElementSubtitle>
-                  Follow a hashtag total posts, videos
-                </Styles.MarketingElementSubtitle>
-              </Styles.MarketingElement>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              style={{
-                color: "inherit",
-                textAlign: "left",
-                fontWeight: "inherit",
-              }}
-            >
-              <Styles.GraphicElement>
-                <Image.GraphicDesign />
-
-                <Styles.MarketingElementH4>
-                  Graphic design
-                </Styles.MarketingElementH4>
-
-                <Styles.MarketingElementSubtitle>
-                  Follow a hashtag total posts, videos
-                </Styles.MarketingElementSubtitle>
-              </Styles.GraphicElement>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              style={{
-                color: "inherit",
-                textAlign: "left",
-                fontWeight: "inherit",
-              }}
-            >
-              <Styles.HeakingElement>
-                <Image.Heaking />
-
-                <Styles.MarketingElementH4>Heaking</Styles.MarketingElementH4>
-
-                <Styles.MarketingElementSubtitle>
-                  Follow a hashtag total posts, videos
-                </Styles.MarketingElementSubtitle>
-              </Styles.HeakingElement>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              style={{
-                color: "inherit",
-                textAlign: "left",
-                fontWeight: "inherit",
-              }}
-            >
-              <Styles.UIUXDesignElement>
-                <Image.UIXDesign />
-
-                <Styles.MarketingElementH4>
-                  UI/UX Design
-                </Styles.MarketingElementH4>
-
-                <Styles.MarketingElementSubtitle>
-                  Follow a hashtag total posts, videos
-                </Styles.MarketingElementSubtitle>
-              </Styles.UIUXDesignElement>
-            </motion.button>
+                  <Styles.OurElementSubtitle windowWidth={size}>
+                    {item.subtitle}
+                  </Styles.OurElementSubtitle>
+                </Styles.OurElement>
+              </motion.button>
+            ))}
           </Styles.RightPartContent>
         </Styles.WeProvideThatServiceRightPart>
       </Styles.WeProvideThatService>

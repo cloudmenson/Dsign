@@ -1,34 +1,83 @@
 import styled, { css } from "styled-components";
 
+import { IWindowWidth } from "./types";
+
 export const OurServiceSection = styled.section`
   padding: 50px 0;
 `;
 
-export const WeProvideThatService = styled.div`
+export const WeProvideThatService = styled.div<IWindowWidth>`
   padding: 50px 0;
   margin-top: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 1150 &&
+    css`
+      flex-direction: column;
+      text-align: center;
+    `}
+
+    ${windowWidth < 769 &&
+    css`
+      margin-top: 150px;
+    `}
+  `}
 `;
 
-export const WeProvideThatServiceLeftPart = styled.div`
+export const WeProvideThatServiceLeftPart = styled.div<IWindowWidth>`
+  margin-right: 40px;
   display: flex;
   flex-direction: column;
   align-items: left;
   max-width: 512px;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 1150 &&
+    css`
+      margin-right: 0;
+      max-width: 750px;
+      align-items: center;
+    `}
+  `}
 `;
 
-export const OurServiceH2 = styled.h2`
+export const OurServiceH2 = styled.h2<IWindowWidth>`
   font-size: 60px;
   line-height: 80px;
   font-weight: 600;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 997 &&
+    css`
+      font-size: 50px;
+      line-height: 75px;
+    `}
+
+    ${windowWidth < 376 &&
+    css`
+      font-size: 42px;
+      line-height: 55px;
+
+    `}
+  `}
 `;
 
-export const OurServiceText = styled.p`
+export const OurServiceText = styled.p<IWindowWidth>`
   margin-top: 20px;
   font-size: 18px;
   line-height: 33px;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 997 &&
+    css`
+      font-size: 15px;
+      line-height: 28px;
+    `}
+  `}
 `;
 
 export const OurServiceLink = styled.a`
@@ -52,27 +101,56 @@ export const OurServiceLinkSpan = styled.span`
   margin-right: 6px;
 `;
 
-export const WeProvideThatServiceRightPart = styled.div``;
+export const WeProvideThatServiceRightPart = styled.div<IWindowWidth>`
+  padding: 15px;
+  max-width: 580px;
+  background-size: 490px;
+  background-repeat: no-repeat;
+  border-radius: 20px;
 
-export const RightPartContent = styled.div`
-  position: relative;
-  margin-right: 60px;
+  ${({ theme, windowWidth }) => css`
+    background-image: linear-gradient(
+      to left,
+      ${theme.colors.ourNetworkBackground},
+      ${theme.colors.ourNetworkBackground}
+    );
+
+    ${windowWidth < 1150 &&
+    css`
+      margin-top: 40px;
+      max-width: 100%;
+      background-size: 100%;
+    `}
+
+    ${windowWidth < 997 &&
+    css`
+      max-width: 670px;
+    `}
+  `}
+`;
+
+export const RightPartContent = styled.div<IWindowWidth>`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 40px 30px;
+  gap: 24px 30px;
   z-index: 10;
-`;
 
-export const RightPartBackground = styled.div`
-  position: absolute;
-  width: 480px;
-  height: 520px;
-  top: -22px;
-  right: -30px;
-  background-color: rgba(47, 184, 227, 0.2);
-  border-radius: 20px;
-  z-index: -1;
+  ${({ windowWidth }) => css`
+    ${windowWidth < 1150 &&
+    css`
+      margin-right: 0;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      gap: 20px;
+    `}
+
+    ${windowWidth < 997 &&
+    css`
+      flex-wrap: wrap;
+      justify-content: center;
+    `}
+  `}
 `;
 
 const stylesForOurServiceElement = css`
@@ -80,7 +158,7 @@ const stylesForOurServiceElement = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 252px;
+  max-width: 252px;
   border-radius: 20px;
 
   ${({ theme }) => css`
@@ -89,31 +167,58 @@ const stylesForOurServiceElement = css`
   `}
 `;
 
-export const MarketingElement = styled.div`
+export const OurElement = styled.div<IWindowWidth>`
   ${stylesForOurServiceElement}
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 1150 &&
+    css`
+      padding: 15px;
+    `}
+  `}
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 997 &&
+    css`
+      padding: 22px 15px;
+      max-width: 300px;
+    `}
+  `}
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 500 &&
+    css`
+      padding: 15px;
+      max-width: 260px;
+    `}
+  `}
 `;
 
-export const GraphicElement = styled.div`
-  ${stylesForOurServiceElement}
-`;
-
-export const HeakingElement = styled.div`
-  ${stylesForOurServiceElement}
-`;
-
-export const UIUXDesignElement = styled.div`
-  ${stylesForOurServiceElement}
-`;
-
-export const MarketingElementH4 = styled.h4`
+export const OurElementH4 = styled.h4<IWindowWidth>`
   margin-top: 20px;
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 997 &&
+    css`
+      font-size: 18px;
+      line-height: 22px;
+    `}
+  `}
 `;
 
-export const MarketingElementSubtitle = styled.p`
+export const OurElementSubtitle = styled.p<IWindowWidth>`
   margin-top: 8px;
   font-size: 18px;
   line-height: 28px;
+
+  ${({ windowWidth }) => css`
+    ${windowWidth < 997 &&
+    css`
+      font-size: 18px;
+      line-height: 22px;
+    `}
+  `}
 `;
