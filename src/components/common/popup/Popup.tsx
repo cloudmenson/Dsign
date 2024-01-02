@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import * as Image from "assets";
 import { Button, Form } from "components";
 
@@ -12,24 +10,6 @@ const Popup = ({ onClose, isResetPassword, text }: IPopup) => {
       onClose();
     }
   };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Escape") {
-      onClose();
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDownEvent = (e: KeyboardEvent) => {
-      handleKeyDown(e);
-    };
-
-    window.addEventListener("keydown", handleKeyDownEvent);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDownEvent);
-    };
-  }, [handleKeyDown]);
 
   return (
     <Styles.Popup onClick={handleOverlayClick}>
