@@ -29,7 +29,7 @@ const Popup = ({ onClose, isResetPassword, text }: IPopup) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDownEvent);
     };
-  }, []);
+  }, [handleKeyDown]);
 
   return (
     <Styles.Popup onClick={handleOverlayClick}>
