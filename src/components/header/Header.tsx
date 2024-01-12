@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <Styles.Header windowWidth={size} isScrolled={isScrolled}>
-      <Styles.Logo href="#">
+      <Styles.Logo href="/">
         <Image.Logo />
 
         <Styles.HiddenTitleH1>Dsign</Styles.HiddenTitleH1>
